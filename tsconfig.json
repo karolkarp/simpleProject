@@ -2,9 +2,31 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
   "compilerOptions": {
-    /* Visit https://aka.ms/tsconfig.json to read more about this file */
-
-    /* Completeness */
-    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+		"baseUrl": ".",
+    "paths": {
+			"@Components/*": ["./src/components/*"],
+			// "@ApiModels/*": ["./src/utils/api/models/*"],
+			// "@Services/*": ["./src/services/*"],
+			"@Store/*": ["./src/store/*"],
+			"@Routes/*": ["./src/routes/*"],
+			"@Views/*": ["./src/views/*"],
+			"@Validators/*": ["./src/validators/*"],
+		},
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "noFallthroughCasesInSwitch": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react-native",
+    "lib": ["dom", "es6"],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext",
+    "noUnusedLocals": true,                        
+    "types": ["jest", "styled-components-react-native"],
+  },
+    "exclude": ["node_modules"],
 }
