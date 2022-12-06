@@ -18,7 +18,7 @@ const Home = observer(() => {
 
 	const handleFormSubmit = (values: IFields) => {
 		setCountryCode(values.countryCode);
-		navigation.navigate(routes.RESULTS);
+		navigation.navigate(routes.RESULTS, {});
 	};
 
 	return (
