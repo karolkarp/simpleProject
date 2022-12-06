@@ -10,8 +10,7 @@ module.exports = {
 				cwd: 'babelrc',
 				alias: {
 					'@Components': './src/components',
-					// '@ApiModels': './src/utils/api/models',
-					// '@Services': './src/services',
+					'@Api': './src/api',
 					'@Store': './src/store',
 					'@Routes': './src/routes/',
 					'@Views': './src/views',

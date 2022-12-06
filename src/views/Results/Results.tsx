@@ -1,21 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCountryCodeStore } from '@Store/countryCode';
 import { observer } from 'mobx-react';
-import { autorun } from 'mobx';
-import { Text } from 'react-native';
-import { Container } from './Results.styled';
+import { ActivityIndicator } from 'react-native';
+import { Code, Container, ErrorMessage, HelloTitle } from './Results.styled';
 
 const Results = observer(() => {
-	const { countryCode } = useCountryCodeStore();
+	const { countryCode, fetchCountryCode, isLoading, response, error } = useCountryCodeStore();
 
-	autorun(() => {
-		console.log('autorun countryCode', countryCode);
-	});
+	useEffect(() => {
+		fetchCountryCode(countryCode);
+	}, [countryCode, fetchCountryCode]);
 
-	// get from mobx here and call api
+	if (isLoading) {
+		return <Container>{isLoading && <ActivityIndicator size="large" color="#0000ff" />}</Container>;
+	}
 	return (
 		<Container>
-			<Text>{countryCode}</Text>
+			{isLoading && <ActivityIndicator size="large" color="#0000ff" />}
+			{error && <ErrorMessage>{error}</ErrorMessage>}
+			{response && (
+				<>
+					<Code>{response?.code}</Code>
+					<HelloTitle>{response?.hello}</HelloTitle>
+				</>
+			)}
 		</Container>
 	);
 });
